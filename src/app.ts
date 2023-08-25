@@ -54,3 +54,21 @@ user2 = new Person('Max')
 // user2.location = 'Munich' // this is not possible if location is readonly
 
 user2.greet('Hi there - I am')
+
+type AddFn = (a: number, b: number) => number
+
+let add: AddFn
+
+add = (n1: number, n2: number) => {
+  return n1 + n2
+}
+
+interface AddFn2 {
+  (a: number, b: number): number
+}
+
+let add2: AddFn2
+
+add2 = (n1: number, n2: number) => {
+  return n1 + n2
+}
