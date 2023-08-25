@@ -1,7 +1,7 @@
 abstract class Department {
   protected employees: string[] = []
 
-  constructor(private readonly id: string, public name: string) {}
+  constructor(protected readonly id: string, public name: string) {}
 
   abstract describe(this: Department): void //{
   //     // console.log('Department: ' + this.name + ' ID: ' + this.id)
