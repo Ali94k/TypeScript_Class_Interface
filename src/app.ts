@@ -1,11 +1,11 @@
-class Department {
+abstract class Department {
   protected employees: string[] = []
 
   constructor(private readonly id: string, public name: string) {}
 
-  describe(this: Department) {
-    console.log('Department: ' + this.name + ' ID: ' + this.id)
-  }
+  abstract describe(this: Department): void //{
+  //     // console.log('Department: ' + this.name + ' ID: ' + this.id)
+  //   }
 
   addEmployee(employee: string) {
     //this.id = 'd2' // this is not possible if id is readonly
@@ -19,23 +19,26 @@ class Department {
   }
 }
 
-const acc = new Department('id1', 'Accounting')
+// const acc = new Department('id1', 'Accounting')
 
-acc.addEmployee('Max')
-acc.addEmployee('Manu')
+// acc.addEmployee('Max')
+// acc.addEmployee('Manu')
 
 // acc.employees[2] = 'Anna' // this is possible if employees is public
 
-acc.describe()
-acc.printEmployeeInformation()
+// acc.describe()
+// acc.printEmployeeInformation()
 
 // const accCopy = { describe: acc.describe, name: 'DUMMY' }
 
 // accCopy.describe() // Department: undefined if "this: Department" is not used and name is not defined in accCopy
 
-console.log(acc)
+// console.log(acc)
 
 class ITDepartment extends Department {
+  describe(this: Department): void {
+    console.log('IT Department')
+  }
   private main: string
 
   get mostMainAdmin() {
