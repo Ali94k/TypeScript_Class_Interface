@@ -13,6 +13,7 @@
 // }
 
 interface Named {
+  // optional properties (?)
   readonly name?: string
   outputName?: string
 }
