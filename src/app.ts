@@ -38,6 +38,20 @@ console.log(acc)
 class ITDepartment extends Department {
   private main: string
 
+  get mostMainAdmin() {
+    if (this.main) {
+      return this.main
+    }
+    throw new Error('No main admin found')
+  }
+
+  set mostMainAdmin(value: string) {
+    if (!value) {
+      throw new Error('Please pass in a valid value!')
+    }
+    this.addEmployee(value)
+  }
+
   constructor(id: string, public admins: string[]) {
     super(id, 'IT')
     this.admins = admins
@@ -60,10 +74,10 @@ it.addEmployee('Manu')
 it.describe()
 it.printEmployeeInformation()
 
-console.log(it)
+it.mostMainAdmin = 'Manu' // this is not possible if mostMainAdmin is readonly. getter and setter are used to access private properties
 
+console.log(it)
 
 const it2: Department = new ITDepartment('id3', ['Max'])
 
 it2.addEmployee('Max_Min')
-
