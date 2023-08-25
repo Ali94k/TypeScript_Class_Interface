@@ -40,6 +40,15 @@ class ITDepartment extends Department {
     console.log('IT Department')
   }
   private main: string
+  private static instance: ITDepartment
+
+  static getInstance() {
+    if (ITDepartment.instance) {
+      return this.instance
+    }
+    this.instance = new ITDepartment('id2', ['Max'])
+    return this.instance
+  }
 
   get mostMainAdmin() {
     if (this.main) {
@@ -55,7 +64,7 @@ class ITDepartment extends Department {
     this.addEmployee(value)
   }
 
-  constructor(id: string, public admins: string[]) {
+  private constructor(id: string, public admins: string[]) {
     super(id, 'IT')
     this.admins = admins
     this.main = admins[0]
@@ -70,17 +79,19 @@ class ITDepartment extends Department {
   }
 }
 
-const it = new ITDepartment('id2', ['Max'])
-it.addEmployee('Max')
-it.addEmployee('Manu')
+// const it = new ITDepartment('id2', ['Max'])
+// it.addEmployee('Max')
+// it.addEmployee('Manu')
 
-it.describe()
-it.printEmployeeInformation()
+// it.describe()
+// it.printEmployeeInformation()
 
-it.mostMainAdmin = 'Manu' // this is not possible if mostMainAdmin is readonly. getter and setter are used to access private properties
+// it.mostMainAdmin = 'Manu' // this is not possible if mostMainAdmin is readonly. getter and setter are used to access private properties
 
-console.log(it)
+// console.log(it)
 
-const it2: Department = new ITDepartment('id3', ['Max'])
+// const it2: Department = new ITDepartment('id3', ['Max'])
 
-it2.addEmployee('Max_Min')
+// it2.addEmployee('Max_Min')
+
+const it3 = ITDepartment.getInstance()
