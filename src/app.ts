@@ -12,10 +12,16 @@
 //   greet(phrase: string): void
 // }
 
-interface Greetable {
-  readonly location: string
-  name: string
+interface Named {
+  readonly name?: string
+  outputName?: string
+}
 
+interface Greetable extends Named {
+  greet(phrase: string): void
+}
+
+interface Greetable {
   greet(phrase: string): void
 }
 
